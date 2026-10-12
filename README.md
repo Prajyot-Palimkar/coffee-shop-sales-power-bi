@@ -43,6 +43,11 @@ these patterns harder to identify.
 
 ## 3. Dataset Overview
 
+Item	Details
+Dataset Type	Sample Coffee Shop Sales Data
+Source Format	Excel (.xlsx)
+Business Domain	Coffee Shop Sales
+Currency	Dollar ($)
 The report uses a provided sample dataset imported from Excel.
 
   -----------------------------------------------------------------------
@@ -58,7 +63,34 @@ The report uses a provided sample dataset imported from Excel.
   
   -----------------------------------------------------------------------
 
-The dataset was used to analyze sales trends, product performance, order volume, and location-level performance.
+The dataset was used to analyze:
+📈 Sales trends and monthly performance
+☕ Product and category performance
+📊 Order volume and units sold
+📍 Location-level sales performance
+
+## 3. Dataset Overview
+
+The report uses a provided sample dataset imported from Excel.
+
+  -----------------------------------------------------------------------
+  Item                                Details
+  ----------------------------------- -----------------------------------
+  Dataset type                        Sample coffee shop sales data
+
+  Source format                       Excel (.xlsx)
+
+  Business domain                     Coffee Shop Sales
+
+  Currency                            Dollar ($)
+  
+  -----------------------------------------------------------------------
+
+The dataset was used to analyze:
+📈 Sales trends and monthly performance
+☕ Product and category performance
+📊 Order volume and units sold
+📍 Location-level sales performance
 
 ## 4. Tools and Technologies
 
@@ -104,7 +136,8 @@ and month-over-month (MoM) growth/difference calculations.
 -   **Date, weekday, and hour analysis** --- Supports temporal
     comparisons.
 
-1 MoM Growth & Diff Sales = 
+```dax
+MoM Growth & Diff Sales = 
     VAR month_diff = [CM Sales] - [PM Sales]
     VAR mom = ([CM Sales] - [PM Sales]) / [PM Sales]
     VAR _sign = IF(month_diff > 0, "+", "")
@@ -113,6 +146,7 @@ and month-over-month (MoM) growth/difference calculations.
     IF(
     ISBLANK([PM Sales]) || [PM Sales] = 0,
     "No Previous Sales",_sign_trend & " " & _sign & FORMAT(mom, "#0.0%" & " | " & _sign & FORMAT(month_diff/1000, "0.0K")) & " " & "vs LM")
+```
 
 ### Data model note
 
@@ -126,59 +160,40 @@ replace the placeholders below with the corresponding filenames.
 
 ### Main Sales Dashboard
 
-![Coffee Shop Sales dashboard](https://github.com/Prajyot-Palimkar/coffee-shop-sales-power-bi/blob/77b3dcd845cb11829a807d4b18c37ebceeee2440/Coffee%20Shop%20Sales%20Dashboard.png)
+![Coffee Shop Sales dashboard](./Coffee%20Shop%20Sales%20Dashboard.png)
 
 ### Product and Category Analysis
 
 ![Product and category
-analysis](https://github.com/Prajyot-Palimkar/coffee-shop-sales-power-bi/blob/77b3dcd845cb11829a807d4b18c37ebceeee2440/Product%20and%20category%20analysis.png)
+analysis](./Product%20and%20category%20analysis.png)
 
 ### Daily Hourly Analysis
 
-![Sales by Days - Hours.png](https://github.com/Prajyot-Palimkar/coffee-shop-sales-power-bi/blob/77b3dcd845cb11829a807d4b18c37ebceeee2440/Sales%20by%20Days%20-%20Hours.png)
+![Sales by Days - Hours.png](./Sales%20by%20Days%20-%20Hours.png)
 
-## 8. Key Insights and Business Recommendations
+## 8. Key Business Insights
 
 The following observations are based on the data present on the dashboard.
 
 ### Findings
 
-1.  **Weekday Morning activity:** Sales were observed to peak around
-    morning hours on Monday, Tuesday, and Wednesday.
-2.  **Within-Month pattern:** Sales generally increased from the
-    beginning of the month toward the middle, then declined toward the
-    end of the month.
-3.  **Highest reported month:** June recorded approximately **166K in
-    total sales**.
-4.  **Reported KPI totals:** The dashboard showed **35,352 total
-    orders** and **50,942 units sold** for the selected reporting
-    context. Confirm the date/filter context and definitions before
-    presenting these as full-period totals.
-5.  **Top reported location:** Hell's Kitchen.
-6.  **Top reported product:** Barista Espresso.
-7.  **Top reported category:** Coffee.
+1.  **📈 Peak Sales Window:** Identified highest activity during weekday morning hours (Mon–Wed).
+2.  **📅 Within-Month Trend:** Sales peaked mid-month, then declined toward month-end.
+3.  **💰 Highest Sales Month:** June, with approximately **166K in total sales**.
+4.  **📊 Key KPIs:** **35,352** orders and **50,942** units sold. 
+5.  **📍 Top Performing Location:** Hell's Kitchen.
+6.  **☕ Best Seller:** Barista Espresso
+7.  **🏆 Top Product Category:** Coffee
 
-### Recommendations for store management
+### Recommendations for Store Management
 
--   **Plan for morning demand:** Review staffing and preparation levels
-    for Monday--Wednesday mornings. Validate the pattern across
-    additional periods before making permanent schedule changes.
--   **Align inventory with demand:** Use product-level and
-    category-level views to review stock availability for
-    high-performing products, especially Barista Espresso and the Coffee
-    category.
--   **Investigate month-end softness:** Compare promotions, operating
-    days, product availability, and customer traffic across the month to
-    understand whether the observed decline is recurring.
--   **Review location performance:** Investigate what contributes to
-    Hell's Kitchen's reported leading performance and assess whether
-    relevant practices can be applied to other locations.
--   **Track trends consistently:** Monitor monthly sales, order counts,
-    and quantities over time to distinguish recurring patterns from
-    one-off fluctuations.
+-   **📈 Optimize Morning Staffing:** Review staffing and preparation for Monday–Wednesday mornings.
+-   **📦 Improve Inventory Planning:** Monitor stock levels for top-performing products, especially Barista Espresso and the Coffee category.
+-   **📅 Investigate Month-End Decline:** Analyze promotions, operating days, and customer traffic to identify potential causes.
+-   **📍 Benchmark Store Performance:** Identify success factors at Hell's Kitchen and explore applying them to other locations.
+-   **📊 Monitor Sales Trends:** Track monthly sales, orders, and units sold to validate recurring patterns.
 
-These recommendations are potential actions for further investigation;
-the dashboard alone does not establish their financial impact.
+_Note: These recommendations are based on observed dashboard trends and require further investigation to confirm their business impact._
 
 ## 9. Project Outcomes
 
