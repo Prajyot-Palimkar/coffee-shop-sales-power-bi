@@ -4,6 +4,14 @@
 > performance across time, product categories, products, and store
 > locations.
 
+## 🎬 Dashboard Demo
+
+<p align="center">
+  <img src="./CoffeeShopSales.gif" width="800" alt="Coffee Shop Sales Dashboard Demo">
+</p>
+
+![Product and category analysis](./CoffeeShopSales.gif)
+
 ## 1. Executive Summary
 
 This project uses Power BI to analyze Coffee Shop Sales and present
@@ -43,54 +51,20 @@ these patterns harder to identify.
 
 ## 3. Dataset Overview
 
-Item	Details
-Dataset Type	Sample Coffee Shop Sales Data
-Source Format	Excel (.xlsx)
-Business Domain	Coffee Shop Sales
-Currency	Dollar ($)
 The report uses a provided sample dataset imported from Excel.
 
-  -----------------------------------------------------------------------
-  Item                                Details
-  ----------------------------------- -----------------------------------
-  Dataset type                        Sample coffee shop sales data
-
-  Source format                       Excel (.xlsx)
-
-  Business domain                     Coffee Shop Sales
-
-  Currency                            Dollar ($)
-  
-  -----------------------------------------------------------------------
+| Item | Details |
+|---|---|
+| Dataset type | Sample coffee shop sales data |
+| Source format | Excel (`.xlsx`) |
+| Business domain | Coffee Shop Sales |
+| Currency | Dollar ($) |
 
 The dataset was used to analyze:
-📈 Sales trends and monthly performance
-☕ Product and category performance
-📊 Order volume and units sold
-📍 Location-level sales performance
-
-## 3. Dataset Overview
-
-The report uses a provided sample dataset imported from Excel.
-
-  -----------------------------------------------------------------------
-  Item                                Details
-  ----------------------------------- -----------------------------------
-  Dataset type                        Sample coffee shop sales data
-
-  Source format                       Excel (.xlsx)
-
-  Business domain                     Coffee Shop Sales
-
-  Currency                            Dollar ($)
-  
-  -----------------------------------------------------------------------
-
-The dataset was used to analyze:
-📈 Sales trends and monthly performance
-☕ Product and category performance
-📊 Order volume and units sold
-📍 Location-level sales performance
+-   📈 Sales trends and monthly performance
+-   ☕ Product and category performance
+-   📊 Order volume and units sold
+-   📍 Location-level sales performance
 
 ## 4. Tools and Technologies
 
@@ -150,22 +124,17 @@ MoM Growth & Diff Sales =
 
 ### Data model note
 
-The project has mainly two tables `Transactions` and `Date Table` names. All the columns & DAX calculations are done in `Transactions` table and date related columns are generated in `Date Table`. The transaction date column of `Transactions` table has Many to one (*:1) relationship with Date column of `Date Table`
+The project has mainly two tables `Transactions` and `Date Table`. All the columns & DAX calculations are done in `Transactions` table and date related columns are generated in `Date Table`. The _transaction date_ column of `Transactions` table has Many to one (*:1) relationship with _Date_ column of `Date Table`
 
 ## 7. Dashboard Screenshots
 
-Screenshots have not yet been added. Capture the report pages in Power
-BI Desktop and save the images in the `screenshots/` folder. Then
-replace the placeholders below with the corresponding filenames.
-
 ### Main Sales Dashboard
 
-![Coffee Shop Sales dashboard](./Coffee%20Shop%20Sales%20Dashboard.png)
+![Coffee Shop Sales Dashboard](./Coffee%20Shop%20Sales%20Dashboard.png)
 
 ### Product and Category Analysis
 
-![Product and category
-analysis](./Product%20and%20category%20analysis.png)
+![Product and Category Analysis](./Product%20and%20category%20analysis.png)
 
 ### Daily Hourly Analysis
 
@@ -241,5 +210,3 @@ coffee-shop-sales-power-bi/
     in the dashboard.
 -   Exact source-data details, transformation steps, DAX formulas, and
     model relationships are present in Power BI file.
--   Screenshots are placeholders until actual report captures are
-    committed to the repository.
