@@ -10,8 +10,6 @@
   <img src="./CoffeeShopSales.gif" width="800" alt="Coffee Shop Sales Dashboard Demo">
 </p>
 
-![Product and category analysis](./CoffeeShopSales.gif)
-
 ## 1. Executive Summary
 
 This project uses Power BI to analyze Coffee Shop Sales and present
