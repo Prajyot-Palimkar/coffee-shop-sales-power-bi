@@ -1,12 +1,12 @@
 # Coffee Shop Sales Analysis \| Power BI
 
-> An interactive Power BI report for exploring coffee shop sales
+> An interactive Power BI report for exploring Coffee Shop Sales
 > performance across time, product categories, products, and store
 > locations.
 
 ## 1. Executive Summary
 
-This project uses Power BI to analyze coffee shop sales and present
+This project uses Power BI to analyze Coffee Shop Sales and present
 business performance through an interactive dashboard. The report is
 designed to help store management review key sales KPIs, identify
 temporal sales patterns, and compare performance across products,
@@ -50,56 +50,37 @@ The report uses a provided sample dataset imported from Excel.
   ----------------------------------- -----------------------------------
   Dataset type                        Sample coffee shop sales data
 
-  Source format                       Excel
+  Source format                       Excel (.xlsx)
 
-  Business domain                     Retail / food and beverage sales
+  Business domain                     Coffee Shop Sales
 
-  Expected analytical grain           Transaction-level sales records;
-                                      verify against the source workbook
-
-  Reporting period                    Not independently verified from the
-                                      available project details
-
-  Row count                           Not yet documented
-
-  Currency definition                 Not yet documented; confirm the
-                                      source data and report formatting
+  Currency                            Dollar ($)
+  
   -----------------------------------------------------------------------
 
-The report references fields and concepts related to transaction
-records, transaction dates, product types, product categories, store
-locations, and time-based analysis. Exact column definitions and data
-types should be documented after reviewing the source workbook.
+The dataset was used to analyze sales trends, product performance, order volume, and location-level performance.
 
 ## 4. Tools and Technologies
 
--   **Microsoft Power BI Desktop** --- report development and
-    interactive visualizations.
--   **Power Query** --- data import and transformation.
--   **DAX** --- measures and calculated columns.
--   **Excel** --- source data format.
--   **Git and GitHub** --- version control and project documentation.
+-   **Microsoft Power BI Desktop** --- Report Development and
+    Interactive Visualizations.
+-   **Power Query** --- Data import and transformation.
+-   **DAX** --- Measures and calculated columns.
+-   **Excel** --- Source data format.
+-   **Git and GitHub** --- Version control and project documentation.
 
 ## 5. Data Cleaning and Transformation
 
-Power Query was used for data preparation. The exact transformation
-steps have not yet been documented, so this section intentionally avoids
-claiming specific operations such as duplicate removal, null handling,
-or type corrections.
+Data preparation was performed using Power Query in Power BI.
 
-For a reproducible portfolio presentation, document the steps that were
-actually applied, such as:
+The transformation process included the following steps, where applicable:
 
--   Checking column names and assigning appropriate data types.
--   Validating date and time fields for time-based analysis.
--   Checking missing values, duplicate records, and inconsistent
-    categories.
--   Reviewing numeric sales and quantity fields for invalid values.
--   Confirming that transformed values reconcile with the source data.
-
-> **Before publishing:** Replace or supplement this list with the
-> transformations actually performed in Power Query. Do not describe a
-> validation step as completed unless you performed it.
+Reviewed column names and data types.
+Checked for missing or null values.
+Checked for duplicate records.
+Verified date and time fields for sales analysis.
+Ensured numeric sales and quantity fields were suitable for aggregation.
+Prepared the data for product, category, date, time, and store-level analysis.
 
 ## 6. Data Modeling and DAX Calculations
 
@@ -110,31 +91,32 @@ and month-over-month (MoM) growth/difference calculations.
 
 ### KPI and analysis areas
 
--   **Total Sales** --- overall sales value in the current filter
+-   **Total Sales** --- Overall Sales value in the current filter
     context.
--   **Total Orders** --- order count as defined in the report.
--   **Total Quantity Sold** --- total quantity sold.
--   **MoM Sales Growth / Difference** --- month-over-month comparison
+-   **Total Orders** --- Order count as defined in the report.
+-   **Total Quantity Sold** --- Total quantity sold.
+-   **MoM Sales Growth / Difference** --- Month-over-month comparison
     for sales.
--   **MoM Orders Growth / Difference** --- month-over-month comparison
+-   **MoM Orders Growth / Difference** --- Month-over-month comparison
     for orders.
--   **MoM Quantity Growth / Difference** --- month-over-month comparison
+-   **MoM Quantity Growth / Difference** --- Month-over-month comparison
     for quantity.
--   **Date, weekday, and hour analysis** --- supports temporal
+-   **Date, weekday, and hour analysis** --- Supports temporal
     comparisons.
 
-The exact DAX expressions and definitions of "order" and
-month-over-month growth have not been independently verified. Add the
-actual formulas to this section if you want to showcase DAX
-implementation in detail.
+1 MoM Growth & Diff Sales = 
+    VAR month_diff = [CM Sales] - [PM Sales]
+    VAR mom = ([CM Sales] - [PM Sales]) / [PM Sales]
+    VAR _sign = IF(month_diff > 0, "+", "")
+    VAR _sign_trend = IF(month_diff > 0,"▲", "▼")
+    RETURN
+    IF(
+    ISBLANK([PM Sales]) || [PM Sales] = 0,
+    "No Previous Sales",_sign_trend & " " & _sign & FORMAT(mom, "#0.0%" & " | " & _sign & FORMAT(month_diff/1000, "0.0K")) & " " & "vs LM")
 
 ### Data model note
 
-The project notes describe the model as a single-table model. However,
-report metadata references both `Transactions` and `Date Table` names.
-Confirm the model view in Power BI Desktop before publishing this claim;
-if a separate date table is present, update this section to describe the
-actual relationships and model structure.
+The project has mainly two tables `Transactions` and `Date Table` names. All the columns & DAX calculations are done in `Transactions` table and date related columns are generated in `Date Table`. The transaction date column of `Transactions` table has Many to one (*:1) relationship with Date column of `Date Table`
 
 ## 7. Dashboard Screenshots
 
@@ -142,40 +124,28 @@ Screenshots have not yet been added. Capture the report pages in Power
 BI Desktop and save the images in the `screenshots/` folder. Then
 replace the placeholders below with the corresponding filenames.
 
-### Main sales dashboard
+### Main Sales Dashboard
 
-![Coffee Shop Sales dashboard](screenshots/coffee-sales-dashboard.png)
+![Coffee Shop Sales dashboard](https://github.com/Prajyot-Palimkar/coffee-shop-sales-power-bi/blob/77b3dcd845cb11829a807d4b18c37ebceeee2440/Coffee%20Shop%20Sales%20Dashboard.png)
 
-*Add a screenshot of the main dashboard showing the KPI cards, time
-trends, and sales breakdowns.*
-
-### Product and category analysis
+### Product and Category Analysis
 
 ![Product and category
-analysis](screenshots/product-category-analysis.png)
+analysis](https://github.com/Prajyot-Palimkar/coffee-shop-sales-power-bi/blob/77b3dcd845cb11829a807d4b18c37ebceeee2440/Product%20and%20category%20analysis.png)
 
-*Add a screenshot that clearly shows product and product-category
-comparisons.*
+### Daily Hourly Analysis
 
-### Time and location analysis
-
-![Sales by time and store
-location](screenshots/time-and-location-analysis.png)
-
-*Add a screenshot showing hourly/daily patterns and store-location
-performance.*
+![Sales by Days - Hours.png](https://github.com/Prajyot-Palimkar/coffee-shop-sales-power-bi/blob/77b3dcd845cb11829a807d4b18c37ebceeee2440/Sales%20by%20Days%20-%20Hours.png)
 
 ## 8. Key Insights and Business Recommendations
 
-The following observations are based on the findings provided for this
-project. They should be interpreted as descriptive patterns in the
-sample data, not proof of causation.
+The following observations are based on the data present on the dashboard.
 
 ### Findings
 
-1.  **Weekday morning activity:** Sales were observed to peak around
+1.  **Weekday Morning activity:** Sales were observed to peak around
     morning hours on Monday, Tuesday, and Wednesday.
-2.  **Within-month pattern:** Sales generally increased from the
+2.  **Within-Month pattern:** Sales generally increased from the
     beginning of the month toward the middle, then declined toward the
     end of the month.
 3.  **Highest reported month:** June recorded approximately **166K in
@@ -221,10 +191,6 @@ interactive Power BI experience. It supports exploration of:
 -   Store-location comparisons.
 -   Order and quantity metrics alongside sales value.
 
-A quantified business impact, such as increased revenue, reduced waste,
-or improved staffing efficiency, has not been measured as part of the
-information provided for this project.
-
 ## 10. Skills Demonstrated
 
 -   Power BI report design and data visualization.
@@ -246,30 +212,11 @@ coffee-shop-sales-power-bi/
 ├── README.md
 ├── Coffee Shop Sales.pbix
 ├── screenshots/
-│   ├── coffee-sales-dashboard.png
-│   ├── product-category-analysis.png
-│   └── time-and-location-analysis.png
-└── data/
-    └── README.md
+│   ├── Coffee Shop Sales Dashboard.png
+│   ├── Product and category analysis.png
+│   └── Sales by Days - Hours.png
+└── LICENSE                 # Optional
 ```
-
-The `data/` folder can contain a data dictionary or source attribution
-note. Add the original dataset only if its license and sharing terms
-permit redistribution. If the dataset cannot be shared, document how it
-was obtained and what is required to reproduce the report.
-
-## How to View the Project
-
-1.  Download or clone this repository.
-2.  Open `Coffee Shop Sales.pbix` in Microsoft Power BI Desktop.
-3.  If Power BI prompts for a data source, update the source path to the
-    permitted local Excel file.
-4.  Refresh the data if the source file is available and refresh is
-    required.
-5.  Explore the report visuals and available filters.
-
-The report may not refresh on another machine without the original Excel
-source file or a correctly configured data-source path.
 
 ## Notes and Limitations
 
@@ -278,12 +225,6 @@ source file or a correctly configured data-source path.
 -   Reported findings depend on the dataset and the active filters used
     in the dashboard.
 -   Exact source-data details, transformation steps, DAX formulas, and
-    model relationships should be verified and documented before
-    treating this README as a complete technical specification.
+    model relationships are present in Power BI file.
 -   Screenshots are placeholders until actual report captures are
     committed to the repository.
-
-------------------------------------------------------------------------
-
-*Created as a Power BI portfolio project focused on sales analytics and
-business intelligence.*
